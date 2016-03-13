@@ -1,0 +1,21 @@
+{
+  "name": "GrausJS",
+  "version": "0.0.1",
+  "description": "JavaScript Clean Architecture",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {},
+  "author": "Ricardo Pallas",
+  "license": "MIT",
+  "dependencies": {
+    "daggy": "0.0.1",
+    "data.maybe": "^1.2.1",
+    "data.task": "^3.0.0",
+    "ramda": "^0.19.1",
+    "react": "^0.14.7",
+    "react-router": "^2.0.1"
+  },
+  "devDependencies": {}
+}
