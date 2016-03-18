@@ -4,6 +4,8 @@
   "description": "JavaScript Clean Architecture",
   "main": "index.js",
   "directories": {
+    "build": "webpack --progress --colors",
+    "start": "webpack-dev-server --progress --colors --content-base build",
     "test": "test"
   },
   "scripts": {},
@@ -14,8 +16,14 @@
     "data.maybe": "^1.2.1",
     "data.task": "^3.0.0",
     "ramda": "^0.19.1",
-    "react": "^0.14.7",
-    "react-router": "^2.0.1"
+    "riot": "^2.3.17",
+    "sanctuary": "^0.9.1",
+    "stampit": "^2.1.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "babel": "^4.7.12",
+    "babel-loader": "^4.1.0",
+    "webpack": "^1.7.3",
+    "webpack-dev-server": "^1.7.0"
+  }
 }
