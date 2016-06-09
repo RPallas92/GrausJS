@@ -1,1 +1,1 @@
-//TODO make execution independet with Free Monad
+//TODO make execution independet with Free Monad and execute in workers
