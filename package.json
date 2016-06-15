@@ -3,30 +3,34 @@
   "version": "0.0.1",
   "description": "JavaScript Clean Architecture",
   "main": "index.js",
-  "directories": {
-    "build": "webpack --progress --colors",
-    "start": "webpack-dev-server --progress --colors --content-base build",
-    "test": "test"
+  "scripts": {
+    "build": "./node_modules/.bin/browserify src/index.js -t babelify --outfile bundle.js",
+    "watch": "./node_modules/.bin/nodemon --exec npm run build",
+    "start": "./node_modules/.bin/http-server"
   },
-  "scripts": {},
   "author": "Ricardo Pallas",
   "license": "MIT",
   "dependencies": {
     "daggy": "0.0.1",
+    "data.either": "^1.4.0",
     "data.maybe": "^1.2.1",
     "data.task": "^3.0.0",
-    "inferno": "^0.7.9",
-    "inferno-component": "^0.7.9",
-    "inferno-dom": "^0.7.9",
     "ramda": "^0.19.1",
-    "riot": "^2.3.17",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-router": "^2.4.1",
     "sanctuary": "^0.9.1",
     "stampit": "^2.1.1"
   },
   "devDependencies": {
-    "babel": "^4.7.12",
-    "babel-loader": "^4.1.0",
-    "webpack": "^1.7.3",
-    "webpack-dev-server": "^1.7.0"
+    "babel-cli": "^6.3.17",
+    "babel-polyfill": "^6.3.14",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1",
+    "http-server": "^0.8.5",
+    "nodemon": "^1.8.1"
   }
 }
