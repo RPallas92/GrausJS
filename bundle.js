@@ -26481,7 +26481,52 @@ var App = function App() {
 
 exports.default = App;
 
-},{"./presentation/view/UserListView":466,"babel-polyfill":1,"react":463}],466:[function(require,module,exports){
+},{"./presentation/view/UserListView":467,"babel-polyfill":1,"react":463}],466:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var UserListPresenter = function () {
+  function UserListPresenter(view) {
+    _classCallCheck(this, UserListPresenter);
+
+    this.view = view;
+  }
+
+  /*
+  * Called by the view when its loaded/mounted
+  */
+
+
+  _createClass(UserListPresenter, [{
+    key: "resume",
+    value: function resume() {
+      console.log("UserListPresenter - resume");
+    }
+
+    /*
+    * Called by the view when its unloaded/unmounted
+    */
+
+  }, {
+    key: "pause",
+    value: function pause() {
+      console.log("UserListPresenter - pause");
+    }
+  }]);
+
+  return UserListPresenter;
+}();
+
+exports.default = UserListPresenter;
+
+},{}],467:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26506,6 +26551,10 @@ var _UserList = require('./components/UserList');
 
 var _UserList2 = _interopRequireDefault(_UserList);
 
+var _UserListPresenter = require('../presenter/UserListPresenter');
+
+var _UserListPresenter2 = _interopRequireDefault(_UserListPresenter);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26522,6 +26571,7 @@ var UserListView = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(UserListView).call(this, props));
 
+    _this.presenter = new _UserListPresenter2.default(_this);
     _this.state = {
       users: [{
         id: 1,
@@ -26537,6 +26587,16 @@ var UserListView = function (_Component) {
   }
 
   _createClass(UserListView, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.presenter.resume();
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this.presenter.pause();
+    }
+  }, {
     key: 'filterUsers',
     value: function filterUsers(term) {
       console.log(term);
@@ -26559,7 +26619,7 @@ var UserListView = function (_Component) {
 
 exports.default = UserListView;
 
-},{"./components/SearchBar":467,"./components/TitleBar":468,"./components/UserList":469,"react":463}],467:[function(require,module,exports){
+},{"../presenter/UserListPresenter":466,"./components/SearchBar":468,"./components/TitleBar":469,"./components/UserList":470,"react":463}],468:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26589,7 +26649,7 @@ var SearchBar = function SearchBar(_ref) {
 
 exports.default = SearchBar;
 
-},{"react":463}],468:[function(require,module,exports){
+},{"react":463}],469:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26619,7 +26679,7 @@ var TitleBar = function TitleBar(_ref) {
 
 exports.default = TitleBar;
 
-},{"react":463}],469:[function(require,module,exports){
+},{"react":463}],470:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26662,7 +26722,7 @@ var UserList = function UserList(_ref) {
 
 exports.default = UserList;
 
-},{"./UserListItem":470,"react":463}],470:[function(require,module,exports){
+},{"./UserListItem":471,"react":463}],471:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26693,7 +26753,7 @@ var UserListItem = function UserListItem(_ref) {
 
 exports.default = UserListItem;
 
-},{"react":463}],471:[function(require,module,exports){
+},{"react":463}],472:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
@@ -26712,4 +26772,4 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 _reactDom2.default.render(_react2.default.createElement(_Application2.default, null), document.getElementById('root'));
 
-},{"./app/Application":465,"react":463,"react-dom":325}]},{},[471]);
+},{"./app/Application":465,"react":463,"react-dom":325}]},{},[472]);
