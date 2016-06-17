@@ -23,25 +23,30 @@
  *
  */
 
-import daggy from 'daggy';
-import Task from "data.task";
+ import Task from "data.task";
 
 
-const UserDataRepository = daggy.tagged('dataStoreFactory', 'userEntityDataMapper');
+ class UserDataRepository {
+ 	constructor(dataStoreFactory, userEntityDataMapper) {
+ 		this.dataStoreFactory = dataStoreFactory;
+ 		this.userEntityDataMapper = userEntityDataMapper;
+ 	}
 
-//UserDataRepository :: Task (List<User>)
-GetUserList.prototype.users = function() {
-	//we always get users from the cloud
-	const userDataStore = this.userDataStoreFactory.createCloudDataStore();
-	return userDataStore.userEntityList().map(this.userEntityMapper.transform);
+	//UserDataRepository :: Task (List<User>)
+	users() {
+		//Change the datasource with your own strategy 
+		const userDataStore = this.userDataStoreFactory.createCloudDataStore();
+		return userDataStore.userEntityList().map(this.userEntityMapper.transform);
+
+	}
+
+	//UserDataRepository :: Task (User)
+	user(userId) {
+		const userDataStore = this.userDataStoreFactory.create(userId);
+		return userDataStore.userEntityDetails(userId).map(this.userEntityMapper.transform);
+	}
+
 }
 
-//UserDataRepository :: Task (User)
-GetUserList.prototype.user = function(userId) {
-	const userDataStore = this.userDataStoreFactory.create(userId);
-	return userDataStore.userEntityDetails(userId).map(this.userEntityMapper.transform);
-}
 
-module.exports = {
-	UserDataRepository: UserDataRepository
-}
+export default UserDataRepository;

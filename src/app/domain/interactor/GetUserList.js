@@ -23,16 +23,18 @@
  *
  */
 
-import daggy from 'daggy';
 
+class GetUserList {
+	constructor(userRepository) {
+		this.userRepository = userRepository;
+	}
 
-const GetUserList = daggy.tagged('userRepository');
+	execute(){
+		return this.userRepository.getUserList();
+	}
 
-//User :: Task (List<User>)
-GetUserList.prototype.execute = function() {
-	return this.userRepository.getUserList();
 }
 
-module.exports = {
-	GetUserList: GetUserList
-}
+
+
+export default UserListPresenter;
